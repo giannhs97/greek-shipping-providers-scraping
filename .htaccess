@@ -1,0 +1,15 @@
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteRule ^([a-zA-Z]+)/([0-9]+)$ external-class-call.php?courier=$1&voucher=$2 [QSA,L]
+
+RewriteEngine On
+
+#RewriteCond %{THE_REQUEST} /index\.php\?folder=([^\s&]+)&type=([^\s&]+)\s [NC]
+#RewriteRule ^ /%1/%2? [R=301,L,NE]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^([^/]+)/([^/]+)/?$ external-class-call.php?courier=$1&voucher=$2 [L,QSA]
